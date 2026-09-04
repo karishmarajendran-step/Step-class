@@ -1,0 +1,47 @@
+def normalize_code(raw):
+    code = raw.strip()
+
+    if len(code) >= 3:
+        code = (
+            code[:3].upper()
+            + code[3:]
+        )
+
+    return code
+
+
+def validate_and_format(code):
+
+    if len(code) != 13:
+        return "Invalid: wrong length"
+
+    for character in code[:3]:
+        if not character.isalpha():
+            return (
+                "Invalid: publisher code "
+                "must be 3 letters"
+            )
+
+    for character in code[3:]:
+        if not character.isdigit():
+            return (
+                "Invalid: body must contain "
+                "only digits"
+            )
+
+    publisher = code[:3]
+    year = code[3:7]
+    catalog = code[7:]
+
+    return (
+        f"[{publisher}] "
+        f"YEAR: {year} "
+        f"| CATALOG: {catalog}"
+    )
+
+
+raw_code = input("Enter ISBN code: ")
+
+normalized_code = normalize_code(raw_code)
+
+print(validate_and_format(normalized_code))

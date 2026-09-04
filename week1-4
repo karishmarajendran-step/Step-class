@@ -1,0 +1,21 @@
+def find_first_non_repeating_char(text):
+    frequency = {}
+
+    for character in text:
+        frequency[character] = frequency.get(character, 0) + 1
+
+    for character in text:
+        if frequency[character] == 1:
+            return character
+
+    return None
+
+
+text = input("Enter text: ")
+
+result = find_first_non_repeating_char(text)
+
+if result is None:
+    print("No Non-Repeating Character Found")
+else:
+    print("First Non-Repeating Character:", result)

@@ -1,0 +1,24 @@
+def findLongestStreak(signalLog):
+    longestColor = signalLog[0]
+    longestLength = 1
+
+    currentColor = signalLog[0]
+    currentLength = 1
+
+    for i in range(1, len(signalLog)):
+        if signalLog[i] == currentColor:
+            currentLength += 1
+        else:
+            currentColor = signalLog[i]
+            currentLength = 1
+
+        if currentLength > longestLength:
+            longestLength = currentLength
+            longestColor = currentColor
+
+    print("Longest Streak: '" + longestColor +
+          "' repeated", longestLength, "times")
+
+
+signalLog = "RRGGGYRR"
+findLongestStreak(signalLog)

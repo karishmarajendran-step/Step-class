@@ -1,0 +1,15 @@
+def mask_phone_number(phone):
+    if len(phone) != 10:
+        return "Invalid phone number"
+
+    if not phone.isdigit():
+        return "Invalid phone number"
+
+    last_four = phone[-4:]
+
+    return "XXXXXX-" + last_four
+
+
+phone = input("Enter phone number: ")
+
+print(mask_phone_number(phone))

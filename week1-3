@@ -1,0 +1,31 @@
+def get_bmi_status(bmi):
+    if bmi < 18.5:
+        return "Underweight"
+    elif bmi < 25:
+        return "Normal"
+    elif bmi < 30:
+        return "Overweight"
+    else:
+        return "Obese"
+
+
+def print_wellness_report(heights, weights):
+    print("\nPerson | Height | Weight | BMI | Status")
+    print("-" * 55)
+
+    for i in range(len(heights)):
+        bmi = weights[i] / (heights[i] * heights[i])
+
+        print(
+            f"{i + 1} | "
+            f"{heights[i]:.2f} m | "
+            f"{weights[i]:.1f} kg | "
+            f"{bmi:.2f} | "
+            f"{get_bmi_status(bmi)}"
+        )
+
+
+heights = [1.75, 1.60]
+weights = [70, 90]
+
+print_wellness_report(heights, weights)

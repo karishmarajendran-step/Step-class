@@ -1,0 +1,36 @@
+def is_palindrome_iterative(text):
+    left = 0
+    right = len(text) - 1
+
+    while left < right:
+        if text[left] != text[right]:
+            return False
+
+        left += 1
+        right -= 1
+
+    return True
+
+
+def is_palindrome_recursive(text):
+    if len(text) <= 1:
+        return True
+
+    if text[0] != text[-1]:
+        return False
+
+    return is_palindrome_recursive(text[1:-1])
+
+
+def is_palindrome_array_reversal(text):
+    characters = list(text)
+    reversed_characters = characters[::-1]
+
+    return characters == reversed_characters
+
+
+text = input("Enter a word: ").lower()
+
+print("Iterative:", is_palindrome_iterative(text))
+print("Recursive:", is_palindrome_recursive(text))
+print("Array Reversal:", is_palindrome_array_reversal(text))

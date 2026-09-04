@@ -1,0 +1,55 @@
+def normalize_reference(raw):
+    reference = raw.strip()
+
+    if len(reference) >= 3:
+        reference = (
+            reference[:3].upper()
+            + reference[3:]
+        )
+
+    return reference
+
+
+def validate_and_format(reference):
+
+    if len(reference) != 14:
+        return "Invalid: wrong length"
+
+    for character in reference[:3]:
+        if not character.isalpha():
+            return "Invalid: bank code must be 3 letters"
+
+    for character in reference[3:]:
+        if not character.isdigit():
+            return "Invalid: body must contain only digits"
+
+    bank_code = reference[:3]
+    date = reference[3:9]
+    sequence = reference[9:14]
+
+    formatted_date = (
+        date[:2] + "/" +
+        date[2:4] + "/" +
+        date[4:6]
+    )
+
+    return (
+        f"[{bank_code}] "
+        f"DATE: {formatted_date} "
+        f"| SEQ: {sequence}"
+    )
+
+
+raw_reference = input(
+    "Enter bank reference: "
+)
+
+normalized_reference = normalize_reference(
+    raw_reference
+)
+
+print(
+    validate_and_format(
+        normalized_reference
+    )
+)

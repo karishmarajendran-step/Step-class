@@ -1,0 +1,55 @@
+import random
+
+
+def play_round(player_move, computer_move):
+    if player_move.lower() == computer_move.lower():
+        return "Draw"
+
+    if (
+        (player_move.lower() == "rock" and computer_move.lower() == "scissors")
+        or (player_move.lower() == "paper" and computer_move.lower() == "rock")
+        or (player_move.lower() == "scissors" and computer_move.lower() == "paper")
+    ):
+        return "Player Wins"
+
+    return "Computer Wins"
+
+
+moves = ["rock", "paper", "scissors"]
+
+wins = 0
+losses = 0
+draws = 0
+
+for round_number in range(1, 6):
+    player_move = input(
+        f"\nRound {round_number}: Enter Rock, Paper, or Scissors: "
+    ).lower()
+
+    while player_move not in moves:
+        player_move = input(
+            "Invalid choice. Enter Rock, Paper, or Scissors: "
+        ).lower()
+
+    computer_move = random.choice(moves)
+
+    result = play_round(player_move, computer_move)
+
+    print("Player:", player_move.capitalize())
+    print("Computer:", computer_move.capitalize())
+    print("Result:", result)
+
+    if result == "Player Wins":
+        wins += 1
+    elif result == "Computer Wins":
+        losses += 1
+    else:
+        draws += 1
+
+win_percentage = (wins / 5) * 100
+
+print("\n----- FINAL SUMMARY -----")
+print("Wins:", wins)
+print("Losses:", losses)
+print("Draws:", draws)
+print("Win Percentage:", win_percentage, "%")

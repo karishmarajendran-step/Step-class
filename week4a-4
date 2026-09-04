@@ -1,0 +1,33 @@
+def subarray_sum(nums, k):
+
+    prefix_frequency = {0: 1}
+
+    current_sum = 0
+    count = 0
+
+    for num in nums:
+
+        current_sum += num
+
+        required_sum = (
+            current_sum - k
+        )
+
+        if required_sum in prefix_frequency:
+            count += prefix_frequency[
+                required_sum
+            ]
+
+        prefix_frequency[current_sum] = (
+            prefix_frequency.get(
+                current_sum, 0
+            ) + 1
+        )
+
+    return count
+
+
+nums = [1, 1, 1]
+k = 2
+
+print(subarray_sum(nums, k))

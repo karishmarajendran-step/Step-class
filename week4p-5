@@ -1,0 +1,20 @@
+def rotate_array(nums, k):
+
+    k = k % len(nums)
+
+    new_array = [0] * len(nums)
+
+    for i in range(len(nums)):
+
+        new_position = (
+            i + k
+        ) % len(nums)
+
+        new_array[new_position] = nums[i]
+
+    return new_array
+
+
+nums = [1, 2, 3, 4, 5, 6, 7]
+
+print(rotate_array(nums, 3))

@@ -1,0 +1,19 @@
+def parse_student_record(csv_line):
+    fields = csv_line.split(",")
+
+    if len(fields) != 3:
+        print("Invalid Record")
+        return
+
+    print(
+        f"Name: {fields[0]} | "
+        f"Roll No: {fields[1]} | "
+        f"Dept: {fields[2]}"
+    )
+
+
+record = input(
+    "Enter Name,RollNumber,Department: "
+)
+
+parse_student_record(record)

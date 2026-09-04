@@ -1,0 +1,24 @@
+def classifyWordLengths(review):
+    short = 0
+    medium = 0
+    long = 0
+
+    words = review.split()
+
+    for word in words:
+        length = len(word)
+
+        if length <= 4:
+            short += 1
+        elif length <= 8:
+            medium += 1
+        else:
+            long += 1
+
+    print("Short:", short)
+    print("Medium:", medium)
+    print("Long:", long)
+
+
+review = "This movie was absolutely fantastic and thrilling"
+classifyWordLengths(review)

@@ -1,0 +1,42 @@
+def analyzeInventory(sectionA, sectionB):
+    totalA = 0
+    totalB = 0
+
+    for quantity in sectionA:
+        totalA += quantity
+
+    for quantity in sectionB:
+        totalB += quantity
+
+    if totalA == totalB:
+        status = "Balanced"
+    else:
+        status = "Not Balanced"
+
+    highest = sectionA[0]
+    highestSection = "Section A"
+    highestIndex = 0
+
+    for i in range(len(sectionA)):
+        if sectionA[i] > highest:
+            highest = sectionA[i]
+            highestSection = "Section A"
+            highestIndex = i
+
+    for i in range(len(sectionB)):
+        if sectionB[i] > highest:
+            highest = sectionB[i]
+            highestSection = "Section B"
+            highestIndex = i
+
+    print("Section A Total:", totalA)
+    print("Section B Total:", totalB)
+    print("Status:", status)
+    print("Highest Quantity:", highest,
+          "(", highestSection, ", Item", highestIndex + 1, ")")
+
+
+sectionA = [20, 15, 30]
+sectionB = [25, 10, 30]
+
+analyzeInventory(sectionA, sectionB)

@@ -1,0 +1,19 @@
+def parse_inventory_record(csv_line):
+    fields = csv_line.split(",")
+
+    if len(fields) != 3:
+        print("Invalid Record")
+        return
+
+    print(
+        f"Product: {fields[0]} | "
+        f"SKU: {fields[1]} | "
+        f"Qty: {fields[2]}"
+    )
+
+
+record = input(
+    "Enter ProductName,SKU,Quantity: "
+)
+
+parse_inventory_record(record)
